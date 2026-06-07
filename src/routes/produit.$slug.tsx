@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { Leaf, Package, ArrowLeft } from "lucide-react";
+import { Leaf, Package, ArrowLeft, Clock, Sun, Droplets } from "lucide-react";
 import { getProduct, type Product } from "@/lib/products";
 import { useCart } from "@/lib/cart";
 
@@ -131,6 +131,33 @@ function ProductPage() {
             </p>
           </div>
 
+          {/* CONSEILS D'UTILISATION */}
+          <div className="mt-10">
+            <h3 className="text-xs uppercase tracking-wide-2 text-muted-foreground">
+              Conseils d'utilisation
+            </h3>
+            <div className="mt-4 grid grid-cols-3 gap-3">
+              {[
+                { icon: Package, label: "Dosage", value: "2 capsules / jour" },
+                { icon: Sun, label: "Moment", value: "Au cours d'un repas" },
+                { icon: Droplets, label: "Avec", value: "Un grand verre d'eau" },
+              ].map((tip) => (
+                <div
+                  key={tip.label}
+                  className="flex flex-col items-center text-center rounded-2xl p-4 gap-2"
+                  style={{ backgroundColor: product.softVar }}
+                >
+                  <tip.icon className="h-5 w-5" style={{ color: product.accentVar }} strokeWidth={1.4} />
+                  <span className="text-[10px] uppercase tracking-wide-2 text-muted-foreground">{tip.label}</span>
+                  <span className="text-xs font-medium">{tip.value}</span>
+                </div>
+              ))}
+            </div>
+            <p className="mt-4 text-xs text-muted-foreground leading-relaxed">
+              Pour de meilleurs résultats, prenez ce complément de façon régulière pendant au moins 4 semaines. Ne pas dépasser la dose journalière recommandée.
+            </p>
+          </div>
+
           <div
             className="mt-12 flex items-center justify-between border-t pt-8"
             style={{ borderColor: "rgba(0,0,0,0.08)" }}
@@ -141,23 +168,9 @@ function ProductPage() {
             </div>
 
             {product.shopifyUrl ? (
-              <a
-                href={product.shopifyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn rounded-full px-10 py-4 text-xs uppercase tracking-wide-2 text-background shadow-pop"
-                style={{ backgroundColor: product.accentVar }}
-              >
-                Commander →
-              </a>
+              <a href={product.shopifyUrl} target="_blank" rel="noopener noreferrer" className="btn rounded-full px-10 py-4 text-xs uppercase tracking-wide-2 text-background shadow-pop" style={{ backgroundColor: product.accentVar }}>Commander →</a>
             ) : (
-              <button
-                onClick={() => add(product)}
-                className="btn rounded-full px-10 py-4 text-xs uppercase tracking-wide-2 text-background shadow-pop"
-                style={{ backgroundColor: product.accentVar }}
-              >
-                Ajouter au panier
-              </button>
+              <button onClick={() => add(product)} className="btn rounded-full px-10 py-4 text-xs uppercase tracking-wide-2 text-background shadow-pop" style={{ backgroundColor: product.accentVar }}>Ajouter au panier</button>
             )}
           </div>
         </div>
