@@ -32,7 +32,7 @@ export const products: Product[] = [
     accent: "prosta",
     accentVar: "var(--prosta)",
     softVar: "var(--prosta-soft)",
-    image: "/images/prosta.jpeg",
+    image: "/images/prosta.webp",
     description:
       "Formulé pour soutenir la santé prostatique et le confort urinaire au quotidien, PROSTA+ combine des actifs naturels soigneusement sélectionnés pour leur efficacité et leur tolérance.",
     benefits: [
@@ -55,7 +55,7 @@ export const products: Product[] = [
     accent: "serenite",
     accentVar: "var(--serenite)",
     softVar: "var(--serenite-soft)",
-    image: "/images/serenite.jpeg",
+    image: "/images/serenite.webp",
     shopifyUrl: "https://ayleen-5737.myshopify.com/products/ayleen-sereneti?variant=50784095633655",
     description:
       "Votre allié anti-stress naturel pour retrouver calme, équilibre et sérénité. SÉRÉNITÉ+ a été développé pour offrir un soutien naturel grâce à une association complète de plantes apaisantes et de vitamines essentielles.",
@@ -80,7 +80,7 @@ export const products: Product[] = [
     accent: "sommeil",
     accentVar: "var(--sommeil)",
     softVar: "var(--sommeil-soft)",
-    image: "/images/sommeil.jpeg",
+    image: "/images/sommeil.webp",
     description:
       "Formulé pour favoriser un endormissement naturel et un sommeil profond et réparateur, SOMMEIL+ associe des plantes reconnues et des actifs ciblés pour vous aider à retrouver des nuits sereines, sans accoutumance.",
     benefits: [
