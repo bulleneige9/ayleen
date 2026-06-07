@@ -52,7 +52,7 @@ export function Header() {
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:px-10">
           <Link to="/" className="flex items-center">
             <img
-              src="/src/assets/logo.png"
+              src="/logo.png"
               alt="Ayleen"
               className="h-10 w-auto object-contain"
             />
