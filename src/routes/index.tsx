@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Sparkles, Leaf, FlaskConical, Heart, Star } from "lucide-react";
+import { ArrowRight, Sparkles, Leaf, FlaskConical, Heart, Star, Search, Beaker, Package, Truck } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { products } from "@/lib/products";
@@ -127,6 +127,44 @@ function Index() {
         </div>
       </section>
 
+      {/* COMMENT ÇA MARCHE */}
+      <section className="relative py-24 md:py-32">
+        <div className="relative mx-auto max-w-7xl px-6 md:px-10">
+          <Reveal>
+            <span className="text-[11px] uppercase tracking-wide-2 text-muted-foreground">Le processus</span>
+            <h2 className="mt-3 font-display text-5xl md:text-6xl max-w-3xl">
+              Comment ça <span className="italic text-aurora">marche ?</span>
+            </h2>
+          </Reveal>
+          <div className="mt-16 grid md:grid-cols-4 gap-8">
+            {[
+              { icon: Search, step: "01", title: "Recherche", desc: "Chaque actif est sélectionné sur la base d'études cliniques rigoureuses.", color: "var(--prosta)" },
+              { icon: Beaker, step: "02", title: "Formulation", desc: "Nos experts combinent les actifs en synergie pour une efficacité maximale.", color: "var(--serenite)" },
+              { icon: Package, step: "03", title: "Fabrication", desc: "Production en laboratoire certifié avec contrôles qualité sur chaque lot.", color: "var(--sommeil)" },
+              { icon: Truck, step: "04", title: "Livraison", desc: "Expédition rapide et sécurisée directement chez vous en Algérie.", color: "var(--prosta)" },
+            ].map((step, i) => (
+              <Reveal key={step.step} delay={i * 120}>
+                <motion.div
+                  whileHover={{ y: -8 }}
+                  className="relative rounded-3xl p-8 transition-colors"
+                  style={{ background: "rgba(255,255,255,0.35)", backdropFilter: "blur(20px) saturate(180%)", WebkitBackdropFilter: "blur(20px) saturate(180%)", border: "1px solid rgba(255,255,255,0.5)" }}
+                >
+                  <span className="text-[11px] uppercase tracking-wide-2 text-muted-foreground">{step.step}</span>
+                  <div
+                    className="mt-4 flex h-14 w-14 items-center justify-center rounded-2xl"
+                    style={{ backgroundColor: step.color }}
+                  >
+                    <step.icon className="h-6 w-6 text-background" strokeWidth={1.4} />
+                  </div>
+                  <h3 className="mt-6 font-display text-2xl">{step.title}</h3>
+                  <p className="mt-3 text-sm text-foreground/70 leading-relaxed">{step.desc}</p>
+                </motion.div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* VALUES */}
       <section className="relative py-24 md:py-32">
         <div className="relative mx-auto max-w-7xl px-6 md:px-10">
@@ -145,7 +183,7 @@ function Index() {
                 <motion.div
                   whileHover={{ y: -8 }}
                   className="group relative rounded-3xl p-8 transition-colors"
-style={{ background: "rgba(255,255,255,0.35)", backdropFilter: "blur(20px) saturate(180%)", WebkitBackdropFilter: "blur(20px) saturate(180%)", border: "1px solid rgba(255,255,255,0.5)" }}
+                  style={{ background: "rgba(255,255,255,0.35)", backdropFilter: "blur(20px) saturate(180%)", WebkitBackdropFilter: "blur(20px) saturate(180%)", border: "1px solid rgba(255,255,255,0.5)" }}
                 >
                   <div
                     className="flex h-14 w-14 items-center justify-center rounded-2xl"
