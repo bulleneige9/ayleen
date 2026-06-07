@@ -1,10 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Sparkles, Leaf, FlaskConical, Heart, Star, Search, Beaker, Package, Truck } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { products } from "@/lib/products";
 import { ProductCard } from "@/components/product-card";
 import { Reveal } from "@/components/reveal";
+import { ArrowRight, Sparkles, Leaf, FlaskConical, Heart, Star, Search, Beaker, Package, Truck, Shield, RotateCcw, Award, HeadphonesIcon } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -101,6 +101,7 @@ function Index() {
         </div>
       </section>
 
+
       {/* PRODUCT SHOWCASE */}
       <section className="relative mx-auto max-w-7xl px-6 md:px-10 py-24 md:py-32">
         <Reveal>
@@ -122,6 +123,30 @@ function Index() {
           {products.map((p, i) => (
             <Reveal key={p.slug} delay={i * 120}>
               <ProductCard product={p} />
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* TRUST BAND */}
+      <section className="relative mx-auto max-w-7xl px-6 md:px-10 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+          {[
+            { icon: Truck, title: "Livraison rapide", desc: "Partout en Algérie" },
+            { icon: Shield, title: "Paiement sécurisé", desc: "à la livraison" },
+            { icon: Award, title: "Qualité certifiée", desc: "Testé en laboratoire" },
+          ].map((item, i) => (
+            <Reveal key={item.title} delay={i * 80}>
+              <div
+                className="flex flex-col items-center text-center rounded-2xl p-6 gap-3"
+                style={{ background: "rgba(255,255,255,0.35)", backdropFilter: "blur(20px) saturate(180%)", WebkitBackdropFilter: "blur(20px) saturate(180%)", border: "1px solid rgba(255,255,255,0.5)" }}
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl" style={{ backgroundColor: "var(--serenite)" }}>
+                  <item.icon className="h-5 w-5 text-background" strokeWidth={1.4} />
+                </div>
+                <h3 className="font-display text-sm">{item.title}</h3>
+                <p className="text-xs text-muted-foreground">{item.desc}</p>
+              </div>
             </Reveal>
           ))}
         </div>
