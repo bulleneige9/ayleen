@@ -13,6 +13,7 @@ import { CartProvider } from "@/lib/cart";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { CartDrawer } from "@/components/cart-drawer";
+import { LoadingScreen } from "@/components/loading-screen";
 
 function NotFoundComponent() {
   return (
@@ -61,7 +62,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" },
-      { rel: "icon", type: "image/png", href: "/logo.png" },
+      
     ],
   }),
   shellComponent: RootShell,
@@ -69,6 +70,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
+
+import { motion, AnimatePresence } from "framer-motion";
+import { useLocation } from "@tanstack/react-router";
+
+function PageTransition({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={location.pathname}
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -16 }}
+        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+      >
+        {children}
+      </motion.div>
+    </AnimatePresence>
+  );
+}
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
@@ -89,6 +110,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <CartProvider>
+        <LoadingScreen />
         <div className="relative flex min-h-screen flex-col">
 
           {/* Background fixe global */}
@@ -107,7 +129,9 @@ function RootComponent() {
 
           <Header />
           <main className="relative z-10 flex-1">
-            <Outlet />
+            <PageTransition>
+              <Outlet />
+            </PageTransition>
           </main>
           <Footer />
         </div>

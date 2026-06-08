@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Facebook } from "lucide-react";
+import { Instagram, Facebook, Mail, Phone } from "lucide-react";
 
 export function Footer() {
   return (
@@ -17,6 +17,19 @@ export function Footer() {
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
             Compléments alimentaires naturels, formulés pour soutenir un équilibre intérieur durable.
           </p>
+
+          {/* Contact */}
+          <div className="mt-6 space-y-2">
+            <a href="mailto:contact@ayleen.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <Mail className="h-4 w-4" strokeWidth={1.4} />
+              contact@ayleen.com
+            </a>
+            <a href="tel:+213552141343" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <Phone className="h-4 w-4" strokeWidth={1.4} />
+              +213 55 214 13 43
+            </a>
+          </div>
+
           <form
             className="mt-8 flex max-w-sm items-center gap-2 pb-2"
             style={{ borderBottom: "1px solid rgba(0,0,0,0.15)" }}
@@ -28,7 +41,7 @@ export function Footer() {
               placeholder="Votre email"
               className="flex-1 bg-transparent text-sm placeholder:text-muted-foreground focus:outline-none"
             />
-            <button className="text-xs uppercase tracking-wide-2 text-foreground hover:opacity-70">
+            <button className="btn text-xs uppercase tracking-wide-2 text-foreground hover:opacity-70 rounded-full px-3 py-1">
               S'inscrire
             </button>
           </form>
@@ -53,6 +66,7 @@ export function Footer() {
           </ul>
         </div>
       </div>
+
       <div style={{ borderTop: "1px solid rgba(255,255,255,0.4)" }}>
         <div className="mx-auto max-w-7xl px-6 md:px-10 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-xs text-muted-foreground">© {new Date().getFullYear()} Ayleen. Tous droits réservés.</div>
