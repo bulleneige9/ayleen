@@ -71,8 +71,7 @@ export function Footer() {
         <div className="mx-auto max-w-7xl px-6 md:px-10 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-xs text-muted-foreground">© {new Date().getFullYear()} Ayleen. Tous droits réservés.</div>
           <div className="flex items-center gap-4 text-muted-foreground">
-            <a href="#" aria-label="Instagram" className="hover:text-foreground"><Instagram className="h-4 w-4" strokeWidth={1.4} /></a>
-            <a href="#" aria-label="Facebook" className="hover:text-foreground"><Facebook className="h-4 w-4" strokeWidth={1.4} /></a>
+            <a href="https://www.facebook.com/ayleen213" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-foreground"><Facebook className="h-4 w-4" strokeWidth={1.4} /></a>
           </div>
         </div>
       </div>
