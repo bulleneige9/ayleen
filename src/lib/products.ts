@@ -33,6 +33,7 @@ export const products: Product[] = [
     accentVar: "var(--prosta)",
     softVar: "var(--prosta-soft)",
     image: "/images/prosta.webp",
+    shopifyUrl: "coming-soon",
     description:
       "Formulé pour soutenir la santé prostatique et le confort urinaire au quotidien, PROSTA+ combine des actifs naturels soigneusement sélectionnés pour leur efficacité et leur tolérance.",
     benefits: [
@@ -81,6 +82,7 @@ export const products: Product[] = [
     accentVar: "var(--sommeil)",
     softVar: "var(--sommeil-soft)",
     image: "/images/sommeil.webp",
+    shopifyUrl: "coming-soon",
     description:
       "Formulé pour favoriser un endormissement naturel et un sommeil profond et réparateur, SOMMEIL+ associe des plantes reconnues et des actifs ciblés pour vous aider à retrouver des nuits sereines, sans accoutumance.",
     benefits: [

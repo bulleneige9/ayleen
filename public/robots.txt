@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ayleen.bulleneige9.workers.dev/sitemap.xml

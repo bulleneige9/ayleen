@@ -86,17 +86,12 @@ export function ProductCard({ product }: { product: Product }) {
           <p className="mt-1 text-xs text-muted-foreground">{product.tagline}</p>
           <div className="mt-3 text-base font-medium">{product.price} DZD</div>
         </div>
-        {product.shopifyUrl ? (
+        {product.shopifyUrl && product.shopifyUrl !== "coming-soon" ? (
           <a href={product.shopifyUrl} target="_blank" rel="noopener noreferrer" className="btn flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-background shadow-pop text-xs" style={{ backgroundColor: product.accentVar }}>→</a>
+        ) : product.shopifyUrl === "coming-soon" ? (
+          <span className="flex items-center justify-center rounded-full px-4 py-2 text-[10px] uppercase tracking-wide-2 text-muted-foreground" style={{ border: "1px solid rgba(0,0,0,0.1)" }}>Bientôt</span>
         ) : (
-          <Link
-            to="/produit/$slug"
-            params={{ slug: product.slug }}
-            className="btn flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-background shadow-pop text-xs"
-            style={{ backgroundColor: product.accentVar }}
-          >
-            →
-          </Link>
+          <Link to="/produit/$slug" params={{ slug: product.slug }} className="btn flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-background shadow-pop text-xs" style={{ backgroundColor: product.accentVar }}>→</Link>
         )}
       </div>
     </motion.article>

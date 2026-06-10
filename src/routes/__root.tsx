@@ -14,6 +14,8 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { CartDrawer } from "@/components/cart-drawer";
 import { LoadingScreen } from "@/components/loading-screen";
+import { useEffect, useState } from "react";
+import { ArrowUp } from "lucide-react";
 
 function NotFoundComponent() {
   return (
@@ -51,11 +53,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Ayleen — L'équilibre intérieur, redéfini." },
+      { title: "Ayleen — Compléments alimentaires naturels | Livraison Algérie" },
       { name: "description", content: "Compléments alimentaires naturels Ayleen : Prosta+, Sérénité+, Sommeil+. Une formulation premium pour votre équilibre." },
       { property: "og:title", content: "Ayleen — Compléments alimentaires premium" },
       { property: "og:description", content: "Une formulation naturelle pour votre équilibre intérieur." },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://ayleen.bulleneige9.workers.dev/images/serenite.webp" },
+{ property: "og:url", content: "https://ayleen.bulleneige9.workers.dev" },
+{ property: "og:locale", content: "fr_FR" },
+{ name: "twitter:card", content: "summary_large_image" },
+{ name: "twitter:image", content: "https://ayleen.bulleneige9.workers.dev/images/serenite.webp" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -88,6 +95,44 @@ function PageTransition({ children }: { children: React.ReactNode }) {
         {children}
       </motion.div>
     </AnimatePresence>
+  );
+}
+
+function ScrollToTop() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 400);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (typeof window === "undefined") return null;
+
+  return (
+    <div
+      className="fixed bottom-8 right-8 z-[999]"
+      style={{
+        opacity: visible ? 1 : 0,
+        pointerEvents: visible ? "auto" : "none",
+        transform: visible ? "translateY(0)" : "translateY(20px)",
+        transition: "all 0.3s ease",
+      }}
+    >
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className="btn flex h-12 w-12 items-center justify-center rounded-full shadow-pop"
+        style={{
+          background: "rgba(255,255,255,0.3)",
+          backdropFilter: "blur(20px) saturate(180%)",
+          WebkitBackdropFilter: "blur(20px) saturate(180%)",
+          border: "1px solid rgba(255,255,255,0.5)",
+        }}
+        aria-label="Retour en haut"
+      >
+        <ArrowUp className="h-5 w-5" strokeWidth={1.4} />
+      </button>
+    </div>
   );
 }
 
@@ -135,6 +180,7 @@ function RootComponent() {
           </main>
           <Footer />
         </div>
+        <ScrollToTop />
         <CartDrawer />
       </CartProvider>
     </QueryClientProvider>

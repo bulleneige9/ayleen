@@ -167,8 +167,10 @@ function ProductPage() {
               <div className="text-xs text-muted-foreground">TVA incluse</div>
             </div>
 
-            {product.shopifyUrl ? (
+            {product.shopifyUrl && product.shopifyUrl !== "coming-soon" ? (
               <a href={product.shopifyUrl} target="_blank" rel="noopener noreferrer" className="btn rounded-full px-10 py-4 text-xs uppercase tracking-wide-2 text-background shadow-pop" style={{ backgroundColor: product.accentVar }}>Commander →</a>
+            ) : product.shopifyUrl === "coming-soon" ? (
+              <span className="rounded-full px-6 py-4 text-xs uppercase tracking-wide-2 text-muted-foreground" style={{ border: "1px solid rgba(0,0,0,0.1)" }}>Bientôt disponible</span>
             ) : (
               <button onClick={() => add(product)} className="btn rounded-full px-10 py-4 text-xs uppercase tracking-wide-2 text-background shadow-pop" style={{ backgroundColor: product.accentVar }}>Ajouter au panier</button>
             )}

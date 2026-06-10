@@ -122,9 +122,9 @@ function Index() {
                 Découvrir la gamme
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={1.6} />
               </Link>
-              <Link to="/notre-science" className="btn inline-flex items-center gap-2 rounded-full glass px-6 py-4 text-xs uppercase tracking-wide-2">
-                Notre science
-              </Link>
+              <Link to="/la-maison" className="btn inline-flex items-center gap-2 rounded-full glass px-6 py-4 text-xs uppercase tracking-wide-2">
+  La Maison
+</Link>
             </div>
 
             <motion.div

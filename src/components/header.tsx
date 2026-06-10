@@ -38,8 +38,7 @@ export function Header() {
   const links = [
     { to: "/", label: "Accueil" },
     { to: "/boutique", label: "Boutique" },
-    { to: "/notre-science", label: "Notre Science" },
-    { to: "/a-propos", label: "À Propos" },
+    { to: "/la-maison", label: "La Maison" },
   ] as const;
 
   return (

@@ -9,25 +9,31 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as NotreScienceRouteImport } from './routes/notre-science'
+import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
+import { Route as LaMaisonRouteImport } from './routes/la-maison'
+import { Route as CgvRouteImport } from './routes/cgv'
 import { Route as BoutiqueRouteImport } from './routes/boutique'
-import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProduitSlugRouteImport } from './routes/produit.$slug'
 
-const NotreScienceRoute = NotreScienceRouteImport.update({
-  id: '/notre-science',
-  path: '/notre-science',
+const MentionsLegalesRoute = MentionsLegalesRouteImport.update({
+  id: '/mentions-legales',
+  path: '/mentions-legales',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaMaisonRoute = LaMaisonRouteImport.update({
+  id: '/la-maison',
+  path: '/la-maison',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CgvRoute = CgvRouteImport.update({
+  id: '/cgv',
+  path: '/cgv',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BoutiqueRoute = BoutiqueRouteImport.update({
   id: '/boutique',
   path: '/boutique',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AProposRoute = AProposRouteImport.update({
-  id: '/a-propos',
-  path: '/a-propos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -43,60 +49,86 @@ const ProduitSlugRoute = ProduitSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/a-propos': typeof AProposRoute
   '/boutique': typeof BoutiqueRoute
-  '/notre-science': typeof NotreScienceRoute
+  '/cgv': typeof CgvRoute
+  '/la-maison': typeof LaMaisonRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/produit/$slug': typeof ProduitSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/a-propos': typeof AProposRoute
   '/boutique': typeof BoutiqueRoute
-  '/notre-science': typeof NotreScienceRoute
+  '/cgv': typeof CgvRoute
+  '/la-maison': typeof LaMaisonRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/produit/$slug': typeof ProduitSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/a-propos': typeof AProposRoute
   '/boutique': typeof BoutiqueRoute
-  '/notre-science': typeof NotreScienceRoute
+  '/cgv': typeof CgvRoute
+  '/la-maison': typeof LaMaisonRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/produit/$slug': typeof ProduitSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/a-propos'
     | '/boutique'
-    | '/notre-science'
+    | '/cgv'
+    | '/la-maison'
+    | '/mentions-legales'
     | '/produit/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/a-propos' | '/boutique' | '/notre-science' | '/produit/$slug'
+  to:
+    | '/'
+    | '/boutique'
+    | '/cgv'
+    | '/la-maison'
+    | '/mentions-legales'
+    | '/produit/$slug'
   id:
     | '__root__'
     | '/'
-    | '/a-propos'
     | '/boutique'
-    | '/notre-science'
+    | '/cgv'
+    | '/la-maison'
+    | '/mentions-legales'
     | '/produit/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AProposRoute: typeof AProposRoute
   BoutiqueRoute: typeof BoutiqueRoute
-  NotreScienceRoute: typeof NotreScienceRoute
+  CgvRoute: typeof CgvRoute
+  LaMaisonRoute: typeof LaMaisonRoute
+  MentionsLegalesRoute: typeof MentionsLegalesRoute
   ProduitSlugRoute: typeof ProduitSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/notre-science': {
-      id: '/notre-science'
-      path: '/notre-science'
-      fullPath: '/notre-science'
-      preLoaderRoute: typeof NotreScienceRouteImport
+    '/mentions-legales': {
+      id: '/mentions-legales'
+      path: '/mentions-legales'
+      fullPath: '/mentions-legales'
+      preLoaderRoute: typeof MentionsLegalesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/la-maison': {
+      id: '/la-maison'
+      path: '/la-maison'
+      fullPath: '/la-maison'
+      preLoaderRoute: typeof LaMaisonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cgv': {
+      id: '/cgv'
+      path: '/cgv'
+      fullPath: '/cgv'
+      preLoaderRoute: typeof CgvRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/boutique': {
@@ -104,13 +136,6 @@ declare module '@tanstack/react-router' {
       path: '/boutique'
       fullPath: '/boutique'
       preLoaderRoute: typeof BoutiqueRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/a-propos': {
-      id: '/a-propos'
-      path: '/a-propos'
-      fullPath: '/a-propos'
-      preLoaderRoute: typeof AProposRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -132,9 +157,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AProposRoute: AProposRoute,
   BoutiqueRoute: BoutiqueRoute,
-  NotreScienceRoute: NotreScienceRoute,
+  CgvRoute: CgvRoute,
+  LaMaisonRoute: LaMaisonRoute,
+  MentionsLegalesRoute: MentionsLegalesRoute,
   ProduitSlugRoute: ProduitSlugRoute,
 }
 export const routeTree = rootRouteImport
